@@ -13,7 +13,7 @@ class Queue:
     def dequeue(self):
         if len(self.buffer)==0:
             print("Queue is empty")
-            return
+            return None
 
         return self.buffer.pop()
 
@@ -35,7 +35,10 @@ def place_orders(orders):
 def serve_orders():
     time.sleep(1)
     while True:
-        order = food_order_queue.dequeue()
+        order = food_q.dequeue()
+        if order == None:
+            print('NO more order')
+            break
         print("Now serving: ",order)
         time.sleep(2)
 
